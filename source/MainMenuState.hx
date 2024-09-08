@@ -121,8 +121,10 @@ class MainMenuState extends MusicBeatState
 		bg.updateHitbox();
 		bg.screenCenter(X);
 		bg.antialiasing = ClientPrefs.globalAntialiasing;
+		#if !mobile
 		if (ClientPrefs.shaders)
 			bg.shader = VCR;
+		#end
 		add(bg);
 
 		camFollow = new FlxObject(0, 0, 1, 1);
