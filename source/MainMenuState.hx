@@ -42,10 +42,10 @@ class MainMenuState extends MusicBeatState
 	var menuItems:FlxTypedGroup<AlphabetTyped>;
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
-
+    #if !mobile
 	var pibbyFNF:Shaders.Pibbified;
 	var VCR:Shaders.OldTVShader;
-
+    #end
 	var shaderIntensity:Float;
 
 	var optionShit:Array<String> = ['FREEPLAY', 'CREDITS'];
@@ -99,11 +99,11 @@ class MainMenuState extends MusicBeatState
 		FlxG.mouse.visible = false; //uh
 
 		persistentUpdate = persistentDraw = true;
-
+        #if !mobile
 		VCR = new Shaders.OldTVShader();
 		// ???????????????????????????
 		pibbyFNF = new Shaders.Pibbified();
-
+        #end
 		//alpha 0 and visible false doesnt work (mouse dont detect the object for some reason)
 		//so now the hitboxes are behind everything xdxdd
 		freeplayhitbox = new FlxSprite(160, 30).makeGraphic(374, 59, FlxColor.GREEN);
@@ -254,6 +254,8 @@ class MainMenuState extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 			Conductor.songPosition = FlxG.sound.music.time;
+			
+		#if !mobile
 
 		if (FlxG.random.int(0, 1) < 0.01)
 		{
@@ -265,6 +267,8 @@ class MainMenuState extends MusicBeatState
 			pibbyFNF.uTime.value[0] += elapsed;
 			VCR.iTime.value[0] += elapsed;
 		}
+		
+		#end
 
 		Conductor.changeBPM(100);
 
