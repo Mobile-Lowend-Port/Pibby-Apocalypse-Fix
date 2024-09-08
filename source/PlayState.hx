@@ -1272,7 +1272,7 @@ class PlayState extends MusicBeatState
             }
 		}
 		if(ClientPrefs.shaders) {
-			chromFNF.setFloat('aberration', -0.5);
+			chromFNF.setFloat('amount', -0.5);
 		}
 
 		super.create();
@@ -2675,7 +2675,7 @@ class PlayState extends MusicBeatState
 		if(ClientPrefs.shaders) {
 			shaderStuff += elapsed;
 
-            chromFNF.setFloat('aberration', abberationShaderIntensity); // error in this shader/line
+            chromFNF.setFloat('amount', abberationShaderIntensity); // error in this shader/line
 			pibbyFNF.glitchMultiply.value[0] = glitchShaderIntensity;
             distortFNF.setFloat('binaryIntensity', distortIntensity);
             distortCAWMFNF.setFloat('binaryIntensity', distortIntensity);
@@ -3402,7 +3402,7 @@ class PlayState extends MusicBeatState
 			case 'Set Chromatic Amount':
 				if(ClientPrefs.shaders) {
 					var val1:Int = Std.parseInt(value1);
-					chromFNF.setFloat('aberration', val1);
+					chromFNF.setFloat('amount', val1);
 				}
 
             case 'Cinematics':
